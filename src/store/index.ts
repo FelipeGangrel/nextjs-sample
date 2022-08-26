@@ -1,6 +1,7 @@
 import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
 import { createWrapper } from "next-redux-wrapper";
-import { useDispatch } from "react-redux";
+import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
+import rootActions from "./rootActions";
 
 import rootReducer from "./rootReducer";
 
@@ -25,4 +26,6 @@ export type AppThunk<ReturnType = void> = ThunkAction<
 >;
 
 export const useAppDispatch = () => useDispatch<AppStore["dispatch"]>();
+export const useAppSelector: TypedUseSelectorHook<AppState> = useSelector;
 export const wrapper = createWrapper<AppStore>(makeStore);
+export const appActions = rootActions;

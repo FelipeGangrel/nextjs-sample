@@ -1,19 +1,17 @@
 import { useCallback } from "react";
-import { useSelector } from "react-redux";
-import { AppState, useAppDispatch } from "store";
-import { increment, decrement } from "store/counter/slices";
+import { appActions, useAppDispatch, useAppSelector } from "store";
 import * as S from "./styles";
 
 export default function Counter() {
   const dispatch = useAppDispatch();
-  const { count } = useSelector((state: AppState) => state.counter);
+  const { count } = useAppSelector((state) => state.counter);
 
   const handleIncrement = useCallback((): void => {
-    dispatch(increment());
+    dispatch(appActions.counter.increment());
   }, [dispatch]);
 
   const handleDecrement = useCallback((): void => {
-    dispatch(decrement());
+    dispatch(appActions.counter.decrement());
   }, [dispatch]);
 
   return (
