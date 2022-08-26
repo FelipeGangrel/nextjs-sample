@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { CounterState } from "contracts/counter";
+import type { CounterState } from "contracts/counter";
 
 const initialState: CounterState = {
   count: 0,
