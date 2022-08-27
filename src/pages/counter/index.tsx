@@ -1,5 +1,5 @@
-import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useCallback } from "react";
 import { appActions, useAppDispatch, useAppSelector } from "store";
 import * as S from "./styles";
@@ -8,6 +8,7 @@ interface StaticProps {
   locale: string;
 }
 
+// getting the locale param from the url
 export const getStaticProps = async ({ locale }: StaticProps) => {
   return {
     props: {
@@ -20,6 +21,10 @@ export default function Counter() {
   const dispatch = useAppDispatch();
   const { count } = useAppSelector((state) => state.counter);
   const { t } = useTranslation(["counter-page", "common"]);
+
+  const user = {
+    name: "John Doe",
+  };
 
   const handleIncrement = useCallback((): void => {
     dispatch(appActions.counter.increment());
@@ -45,6 +50,14 @@ export default function Counter() {
           </S.Button>
         </S.Controls>
       </S.CounterContainer>
+      {/* Passing an object */}
+      <S.Message>{t("common:auth_messages.welcome", { user })}</S.Message>
+      {/* Passing properties */}
+      <S.ErrorMesage>
+        {t("common:error_messages.invalid_email", {
+          email: "test@test.com",
+        })}
+      </S.ErrorMesage>
     </S.PageContainer>
   );
 }

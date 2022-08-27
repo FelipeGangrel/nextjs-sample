@@ -1,5 +1,11 @@
 {
   "buttons": {
     "cancel": "Cancel"
+  },
+  "error_messages": {
+    "invalid_email": "The email {{email}} is invalid"
+  },
+  "auth_messages": {
+    "welcome": "Welcome {{user.name}}"
   }
 }

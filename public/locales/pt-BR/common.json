@@ -1,5 +1,11 @@
 {
   "buttons": {
     "cancel": "Cancelar"
+  },
+  "error_messages": {
+    "invalid_email": "O e-mail {{email}} não é válido"
+  },
+  "auth_messages": {
+    "welcome": "Bem-vindo, {{user.name}}"
   }
 }
