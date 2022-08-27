@@ -1,3 +1,4 @@
+import { appWithTranslation } from "next-i18next";
 import type { AppProps } from "next/app";
 import { wrapper } from "store";
 import { ThemeProvider } from "styled-components";
@@ -15,4 +16,4 @@ function MyApp({ Component, pageProps }: AppProps) {
 
 const WrappedApp = wrapper.withRedux(MyApp);
 
-export default WrappedApp;
+export default appWithTranslation(WrappedApp);
