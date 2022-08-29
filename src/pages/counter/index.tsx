@@ -5,7 +5,7 @@ import Counter from "./components/counter";
 import * as S from "./styles";
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const { locale = "pt-BR" } = context;
+  const { locale = "en" } = context;
 
   return {
     props: {

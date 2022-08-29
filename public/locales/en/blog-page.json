@@ -1,0 +1,5 @@
+{
+  "title": "Title for the blog post of id: {{id}}",
+  "message": "The message param is: {{message}}",
+  "no_message": "No message param was provided"
+}

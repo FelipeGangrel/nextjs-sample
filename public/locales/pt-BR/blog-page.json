@@ -1,0 +1,5 @@
+{
+  "title": "Título para a postagem de blog com id: {{id}}",
+  "message": "O parametro message é: {{message}}",
+  "no_message": "O parametro message não foi informado"
+}
