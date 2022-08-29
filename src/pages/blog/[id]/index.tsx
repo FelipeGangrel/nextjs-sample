@@ -1,8 +1,11 @@
+import MainLayout from "layouts/main";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
+import { NextPageWithLayout } from "pages/_app";
 import { ParsedUrlQuery } from "querystring";
+import { ReactElement } from "react";
 import * as S from "./styles";
 
 interface BlogPost {
@@ -93,7 +96,7 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   };
 };
 
-const BlogPostPage: NextPage<PageProps> = ({ post, products }) => {
+const BlogPostPage: NextPageWithLayout<PageProps> = ({ post, products }) => {
   const router = useRouter();
   const { t } = useTranslation("blog-page");
   const { id, message } = router.query;
@@ -108,6 +111,10 @@ const BlogPostPage: NextPage<PageProps> = ({ post, products }) => {
       <pre>{JSON.stringify(products, null, 2)}</pre>
     </S.PageContainer>
   );
+};
+
+BlogPostPage.getLayout = function getLayout(page: ReactElement) {
+  return <MainLayout>{page}</MainLayout>;
 };
 
 export default BlogPostPage;

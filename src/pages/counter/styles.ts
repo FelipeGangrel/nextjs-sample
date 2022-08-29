@@ -4,8 +4,6 @@ import BaseLink from "next/link";
 export const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
-  max-width: 480px;
-  margin: 0 auto;
   gap: 1rem 0;
 `;
 

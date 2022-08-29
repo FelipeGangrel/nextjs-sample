@@ -1,7 +1,10 @@
-import { GetStaticProps, NextPage } from "next";
+import MainLayout from "layouts/main";
+import { GetStaticProps } from "next";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { NextPageWithLayout } from "pages/_app";
 import { ParsedUrlQuery } from "querystring";
+import { ReactElement } from "react";
 import Counter from "./components/counter";
 import * as S from "./styles";
 
@@ -29,7 +32,7 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   };
 };
 
-const CounterPage: NextPage<PageProps> = ({ user }) => {
+const CounterPage: NextPageWithLayout<PageProps> = ({ user }) => {
   const { t } = useTranslation(["counter-page", "common"]);
 
   return (
@@ -70,6 +73,10 @@ const CounterPage: NextPage<PageProps> = ({ user }) => {
       </S.Link>
     </S.PageContainer>
   );
+};
+
+CounterPage.getLayout = function getLayout(page: ReactElement) {
+  return <MainLayout>{page}</MainLayout>;
 };
 
 export default CounterPage;
