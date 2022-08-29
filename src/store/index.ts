@@ -1,8 +1,8 @@
 import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
 import { createWrapper } from "next-redux-wrapper";
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import rootActions from "./rootActions";
 
+import rootActions from "./rootActions";
 import rootReducer from "./rootReducer";
 
 const makeStore = () =>

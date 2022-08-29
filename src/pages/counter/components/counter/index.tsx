@@ -6,7 +6,7 @@ import * as S from "./styles";
 export default function Counter() {
   const dispatch = useAppDispatch();
   const { count } = useAppSelector((state) => state.counter);
-  const { t } = useTranslation(["counter-page"]);
+  const { t } = useTranslation(["counter-page", "common"]);
 
   const handleIncrement = useCallback((): void => {
     dispatch(appActions.counter.increment());
