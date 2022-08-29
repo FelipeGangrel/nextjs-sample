@@ -75,7 +75,7 @@ const CounterPage: NextPageWithLayout<PageProps> = ({ user }) => {
   );
 };
 
-CounterPage.getLayout = function getLayout(page: ReactElement) {
+CounterPage.getLayout = (page: ReactElement) => {
   return <MainLayout>{page}</MainLayout>;
 };
 

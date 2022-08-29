@@ -113,7 +113,7 @@ const BlogPostPage: NextPageWithLayout<PageProps> = ({ post, products }) => {
   );
 };
 
-BlogPostPage.getLayout = function getLayout(page: ReactElement) {
+BlogPostPage.getLayout = (page: ReactElement) => {
   return <MainLayout>{page}</MainLayout>;
 };
 
