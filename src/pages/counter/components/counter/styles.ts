@@ -8,9 +8,9 @@ export const CounterContainer = styled.div`
 `;
 
 export const CounterValue = styled.div`
-  background-color: ${({ theme }) => theme.palette.white};
+  background-color: ${({ theme }) => theme.palette.black};
+  border: 2px solid ${({ theme }) => theme.palette.light};
   border-radius: ${({ theme }) => theme.borderRadius};
-  border: 2px solid #e5e5e5;
   text-align: center;
   font-size: 2rem;
   padding: 0.5rem 1rem;

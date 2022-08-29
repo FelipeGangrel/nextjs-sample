@@ -18,7 +18,6 @@ export const HeaderTitle = styled.h1``;
 export const Message = styled.div`
   padding: 1rem 2rem;
   border-radius: ${({ theme }) => theme.borderRadius};
-  background-color: ${({ theme }) => theme.palette.white};
 `;
 
 export const ErrorMesage = styled(Message)`

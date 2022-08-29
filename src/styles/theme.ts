@@ -16,8 +16,8 @@ export const theme = {
     primary: palette.blue,
     secondary: palette.green,
     danger: palette.red,
-    background: palette.light,
-    text: palette.dark,
+    background: palette.dark,
+    text: palette.light,
   },
   borderRadius: "0.2rem",
 };

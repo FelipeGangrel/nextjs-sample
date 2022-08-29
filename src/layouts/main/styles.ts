@@ -9,7 +9,6 @@ export const Container = styled.div`
 `;
 
 export const Header = styled.header`
-  background-color: ${({ theme }) => theme.palette.white};
   display: flex;
   flex-direction: row;
 `;
