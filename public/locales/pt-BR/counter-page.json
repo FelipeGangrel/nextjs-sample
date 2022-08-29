@@ -1,5 +1,4 @@
 {
-  "title": "Contador",
   "buttons": {
     "increment": "Mais",
     "decrement": "Menos"
