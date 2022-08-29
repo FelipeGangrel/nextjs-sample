@@ -47,6 +47,27 @@ const CounterPage: NextPage<PageProps> = ({ user }) => {
         })}
       </S.ErrorMesage>
       <S.Link href={"blog/1?message=olar amigo"}>Go to blog</S.Link>
+
+      <S.Link
+        href={`blog/1?${new URLSearchParams({
+          message: "olar amigo",
+        }).toString()}`}
+      >
+        Go to blog
+      </S.Link>
+
+      <S.Link href={`blog/1?message=${encodeURIComponent("olar amigo")}`}>
+        Go to blog
+      </S.Link>
+
+      <S.Link
+        href={{
+          pathname: "blog/[id]",
+          query: { id: 1, message: "olar amigo" },
+        }}
+      >
+        Go to blog
+      </S.Link>
     </S.PageContainer>
   );
 };
