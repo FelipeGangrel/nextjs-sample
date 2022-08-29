@@ -1,7 +1,7 @@
 import { PayloadAction } from "@reduxjs/toolkit";
 
 export interface SettingsState {
-  language: "pt-BR" | "en-US" | "es-ES";
+  language: "pt-BR" | "en";
 }
 
 export interface SetLanguageAction
