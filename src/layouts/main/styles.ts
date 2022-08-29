@@ -7,3 +7,15 @@ export const Container = styled.div`
   margin: 0 auto;
   max-width: 640px;
 `;
+
+export const Header = styled.header`
+  background-color: ${({ theme }) => theme.palette.white};
+  display: flex;
+  flex-direction: row;
+`;
+
+export const UserName = styled.span``;
+
+export const Main = styled.main``;
+
+export const Footer = styled.footer``;

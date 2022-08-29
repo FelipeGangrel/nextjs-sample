@@ -1,5 +1,5 @@
 import MainLayout from "layouts/main";
-import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import { GetStaticPaths, GetStaticProps } from "next";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
@@ -38,23 +38,19 @@ const getProductsData = async (): Promise<Product[]> => {
         { id: 4, name: "Product 4" },
         { id: 5, name: "Product 5" },
       ]);
-    }, 2_000);
+    }, 1_000);
   });
 };
 
 const getBlogPost = async (id: string): Promise<BlogPost> => {
-  return new Promise((resolve, reject) => {
-    const willResolve = Math.random() > 0.2;
-
-    if (!willResolve) reject("Error fetching blog post");
-
+  return new Promise((resolve) => {
     setTimeout(() => {
       resolve({
         id: 1,
         title: "Hello World",
         content: `This is a blog post for id: ${id}`,
       });
-    }, 3_000);
+    }, 1_000);
   });
 };
 
@@ -82,10 +78,10 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   ]);
   console.timeEnd("getting data in parallel");
 
-  console.time("getting data in sequence");
-  const post2 = await getBlogPost(id);
-  const products2 = await getProductsData();
-  console.timeEnd("getting data in sequence");
+  // console.time("getting data in sequence");
+  // const post2 = await getBlogPost(id);
+  // const products2 = await getProductsData();
+  // console.timeEnd("getting data in sequence");
 
   return {
     props: {

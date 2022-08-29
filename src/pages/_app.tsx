@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import { appWithTranslation } from "next-i18next";
 import type { AppProps } from "next/app";
-import type { ReactElement } from "react";
+import { ReactElement, useCallback } from "react";
 import { wrapper } from "store";
 import { ThemeProvider } from "styled-components";
 import { GlobalStyle } from "styles/global";
@@ -16,12 +16,16 @@ type AppPropsWithLayout = AppProps & {
 };
 
 function MyApp({ Component, pageProps }: AppPropsWithLayout) {
-  const getLayout = Component.getLayout ?? ((page) => page);
+  const ComponentWithLayout = useCallback((): ReactElement => {
+    const getLayout = Component.getLayout ?? ((page) => page);
 
-  return getLayout(
+    return getLayout(<Component {...pageProps} />);
+  }, [Component, pageProps]);
+
+  return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Component {...pageProps} />
+      <ComponentWithLayout />
     </ThemeProvider>
   );
 }
