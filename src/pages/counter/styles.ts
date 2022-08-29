@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import BaseLink from "next/link";
 
 export const PageContainer = styled.div`
   display: flex;
@@ -26,3 +27,5 @@ export const ErrorMesage = styled(Message)`
   background-color: ${({ theme }) => theme.colors.danger};
   color: ${({ theme }) => theme.palette.white};
 `;
+
+export const Link = styled(BaseLink)``;

@@ -15,7 +15,7 @@ interface PageProps {
   post: BlogPost;
 }
 
-interface QParams extends ParsedUrlQuery {
+interface QueryParams extends ParsedUrlQuery {
   id: string;
 }
 
@@ -35,7 +35,7 @@ const getBlogPost = async (id: string): Promise<BlogPost> => {
   });
 };
 
-export const getStaticPaths: GetStaticPaths<QParams> = async () => {
+export const getStaticPaths: GetStaticPaths<QueryParams> = async () => {
   return {
     paths: [
       {
@@ -46,7 +46,7 @@ export const getStaticPaths: GetStaticPaths<QParams> = async () => {
   };
 };
 
-export const getStaticProps: GetStaticProps<PageProps, QParams> = async (
+export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   context
 ) => {
   // using non-null assertion operator because we know that the id param is defined

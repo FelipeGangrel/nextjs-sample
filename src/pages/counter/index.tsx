@@ -1,25 +1,36 @@
-import { GetStaticProps } from "next";
+import { GetStaticProps, NextPage } from "next";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { ParsedUrlQuery } from "querystring";
 import Counter from "./components/counter";
 import * as S from "./styles";
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  const { locale = "en" } = context;
+interface User {
+  name: string;
+}
 
+interface PageProps {
+  user: User;
+}
+
+interface QueryParams extends ParsedUrlQuery {}
+
+export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
+  context
+) => {
   return {
     props: {
-      ...(await serverSideTranslations(locale, ["counter-page", "common"])),
+      user: { name: "John Doe" },
+      ...(await serverSideTranslations(context.locale!, [
+        "counter-page",
+        "common",
+      ])),
     },
   };
 };
 
-export default function CounterPage() {
+const CounterPage: NextPage<PageProps> = ({ user }) => {
   const { t } = useTranslation(["counter-page", "common"]);
-
-  const user = {
-    name: "John Doe",
-  };
 
   return (
     <S.PageContainer>
@@ -35,6 +46,9 @@ export default function CounterPage() {
           email: "test@test.com",
         })}
       </S.ErrorMesage>
+      <S.Link href={"blog/1?message=olar amigo"}>Go to blog</S.Link>
     </S.PageContainer>
   );
-}
+};
+
+export default CounterPage;
