@@ -1,11 +1,11 @@
+import { wrapper } from "@/store";
+import { GlobalStyle } from "@/styles/global";
+import { theme } from "@/styles/theme";
 import type { NextPage } from "next";
 import { appWithTranslation } from "next-i18next";
 import type { AppProps } from "next/app";
 import { ReactElement, useCallback } from "react";
-import { wrapper } from "store";
 import { ThemeProvider } from "styled-components";
-import { GlobalStyle } from "styles/global";
-import { theme } from "styles/theme";
 
 export type NextPageWithLayout<P = {}, IP = {}> = NextPage<P, IP> & {
   getLayout?: (page: ReactElement) => ReactElement;

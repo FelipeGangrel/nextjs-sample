@@ -1,5 +1,5 @@
 import { useTranslation } from "next-i18next";
-import { appActions, useAppDispatch, useAppSelector } from "store";
+import { appActions, useAppDispatch, useAppSelector } from "@/store";
 import { useCallback } from "react";
 import * as S from "./styles";
 

@@ -1,6 +1,6 @@
-import type { ButtonSize, ButtonVariant } from "contracts/ui";
+import type { ButtonSize, ButtonVariant } from "@/contracts/ui";
+import { zoomIn } from "@/styles/mixed";
 import styled, { css } from "styled-components";
-import { zoomIn } from "styles/mixed";
 
 interface ButtonPropps {
   variant?: ButtonVariant;

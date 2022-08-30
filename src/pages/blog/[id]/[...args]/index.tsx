@@ -1,9 +1,9 @@
-import MainLayout from "layouts/main";
+import MainLayout from "@/layouts/main";
+import { NextPageWithLayout } from "@/pages/_app";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useRouter } from "next/router";
-import { NextPageWithLayout } from "pages/_app";
 import { ParsedUrlQuery } from "querystring";
 import { ReactElement } from "react";
 import * as S from "./styles";

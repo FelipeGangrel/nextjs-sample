@@ -1,4 +1,4 @@
-import type { Data } from "pages/api/hello";
+import type { Data } from "@/pages/api/hello";
 
 export const fetchHello = async (url: string): Promise<Data> => {
   const res = await fetch(url);
