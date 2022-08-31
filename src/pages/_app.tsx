@@ -1,6 +1,7 @@
-import { wrapper } from "@/store";
+import { wrapper, persistor } from "@/store";
 import { GlobalStyle } from "@/styles/global";
 import { theme } from "@/styles/theme";
+import { PersistGate } from "redux-persist/integration/react";
 import type { NextPage } from "next";
 import { appWithTranslation } from "next-i18next";
 import type { AppProps } from "next/app";
@@ -25,7 +26,9 @@ function MyApp({ Component, pageProps }: AppPropsWithLayout) {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <ComponentWithLayout />
+      <PersistGate persistor={persistor}>
+        <ComponentWithLayout />
+      </PersistGate>
     </ThemeProvider>
   );
 }

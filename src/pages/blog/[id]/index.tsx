@@ -26,7 +26,6 @@ interface PageProps {
 
 interface QueryParams extends ParsedUrlQuery {
   id: string;
-  args: string[];
 }
 
 const getProductsData = async (): Promise<Product[]> => {
@@ -59,7 +58,7 @@ export const getStaticPaths: GetStaticPaths<QueryParams> = async () => {
   return {
     paths: [
       {
-        params: { id: "1", args: [] },
+        params: { id: "1" },
       },
     ],
     fallback: "blocking",
@@ -96,7 +95,7 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
 const BlogPostPage: NextPageWithLayout<PageProps> = ({ post, products }) => {
   const router = useRouter();
   const { t } = useTranslation("blog-page");
-  const { id, args, message } = router.query;
+  const { id, message } = router.query;
 
   return (
     <S.PageContainer>
@@ -104,7 +103,7 @@ const BlogPostPage: NextPageWithLayout<PageProps> = ({ post, products }) => {
       {(message && <p>{t("message", { message })}</p>) || (
         <p>{t("no_message")}</p>
       )}
-      <pre>{JSON.stringify({ id, args }, null, 2)}</pre>
+      <pre>{JSON.stringify({ id }, null, 2)}</pre>
       <pre>{JSON.stringify(post, null, 2)}</pre>
       <pre>{JSON.stringify(products, null, 2)}</pre>
     </S.PageContainer>

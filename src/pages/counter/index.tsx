@@ -5,6 +5,8 @@ import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { ParsedUrlQuery } from "querystring";
 import { ReactElement } from "react";
+import { getSettingsState } from "@/store/settings/slices";
+import { LanguageSelector } from "@/components";
 import Counter from "./components/counter";
 import * as S from "./styles";
 
@@ -21,6 +23,8 @@ interface QueryParams extends ParsedUrlQuery {}
 export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
   context
 ) => {
+  // const { language } = getSettingsState();
+
   return {
     props: {
       user: { name: "John Doe" },
@@ -34,6 +38,7 @@ export const getStaticProps: GetStaticProps<PageProps, QueryParams> = async (
 
 const CounterPage: NextPageWithLayout<PageProps> = ({ user }) => {
   const { t } = useTranslation(["counter-page", "common"]);
+  // i18n.changeLanguage("en");
 
   return (
     <S.PageContainer>
@@ -41,6 +46,7 @@ const CounterPage: NextPageWithLayout<PageProps> = ({ user }) => {
         <S.HeaderTitle>{t("counter-page:title")}</S.HeaderTitle>
       </S.PageHeader>
       <Counter />
+      <LanguageSelector />
       {/* Passing an object */}
       <S.Message>{t("common:auth_messages.welcome", { user })}</S.Message>
       {/* Passing properties */}

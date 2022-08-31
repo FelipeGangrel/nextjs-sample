@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { configureStore, createSlice } from "@reduxjs/toolkit";
 import type { SettingsState, SetLanguageAction } from "contracts/settings";
 
 const initialState: SettingsState = {
@@ -14,3 +14,14 @@ export const settingsSlice = createSlice({
     },
   },
 });
+
+const settingsStore = configureStore({
+  reducer: {
+    [settingsSlice.name]: settingsSlice.reducer,
+  },
+});
+
+export const getSettingsState = (): SettingsState => {
+  const state = settingsStore.getState();
+  return state[settingsSlice.name];
+};
